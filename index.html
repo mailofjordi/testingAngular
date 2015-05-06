@@ -1,18 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html ng-app="gemStore">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
         <script type="text/javascript" src="angular.min.js"></script>
         <script type="text/javascript" src="app.js"></script>
     </head>
     <body ng-controller="StoreController as store">
-        <div class="product row">
-            <div class="col-md-12">  
+        <div ng-repeat="product in store.products">
+        <div class="row" ng-hide="product.soldOut">
+            <div class="col-md-10">  
 		        <h3>
-		            {{store.product.name}}
-		            <em class="pull-right">{{store.product.price}}</em>
+		            {{product.name}}
+		            <em class="pull-right">{{product.price}}</em>
+		            <button ng-show='product.canPurchase'>Add to Cart</button>
 		        </h3>
 		    </div>
+	    </div>
 	    </div>
     </body>
 </html>
