@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html ng-app="store">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html ng-app="gemStore">
     <head>
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-    </head>
-    <body>
         <script type="text/javascript" src="angular.min.js"></script>
         <script type="text/javascript" src="app.js"></script>
-        <p>{{"hello"+"you"}}</p>
+    </head>
+    <body ng-controller="StoreController as store">
+        <div class="product row">
+            <div class="col-md-12">  
+		        <h3>
+		            {{store.product.name}}
+		            <em class="pull-right">{{store.product.price}}</em>
+		        </h3>
+		    </div>
+	    </div>
     </body>
 </html>
