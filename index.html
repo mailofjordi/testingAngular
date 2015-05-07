@@ -16,23 +16,24 @@
     </head>
   <body class="list-group" ng-controller="StoreController as store">
     <header>
-      <h1 class="text-center">Flatlander Crafted Gems</h1>
-      <h2 class="text-center">– an Angular store –</h2>
+      <h1 class="text-center">My first shop with angularJs</h1>
+      <h2 class="text-center">– By Jordi Martínez –</h2>
     </header>
     <div class="list-group-item" ng-repeat="product in store.products">
       <h3>
         {{product.name}}
         <em class="pull-right">{{product.price | currency}}</em>
       </h3>
-      <section ng-show="product.images.length">
-        <img ng-src="{{product.images[0]}}" />
+      <!-- Gallery -->
+      <section ng-show="product.images.length" ng-controller="GalleryManager as gallery">
+        <img ng-src="{{product.images[gallery.current]}}" />
         <ul class="list-inline thumbs">
-          <li class="thumbnail" ng-repeat="image in product.images">
-            <img ng-src="{{image}}" />
+          <li class="thumbnail" ng-repeat="(num,imageSrc) in product.images">
+            <a href ng-click="gallery.setCurrent(num)"><img ng-src="{{imageSrc}}" height="42" width="42" /></a>
           </li>
         </ul>
       </section>
-
+      <!-- END Gallery -->
       <section class="tab" ng-controller="TabController as tabController">
         <ul class="nav nav-pills">
           <li ng-class="{active:tabController.isSet(1)}">
